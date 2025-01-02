@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Urls" ALTER COLUMN "shortUrlID" DROP DEFAULT,
+ALTER COLUMN "shortUrlID" SET DATA TYPE TEXT;
+DROP SEQUENCE "Urls_shortUrlID_seq";
