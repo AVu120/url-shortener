@@ -12,10 +12,10 @@ datasource db {
 }
 
 model Urls {
-    id        Int      @id @default(autoincrement())
-    longUrl   String
-    shortUrl  String
-    createdAt DateTime @default(now())
+    id         String   @id @default(uuid()) @db.Uuid
+    longUrl    String
+    shortUrlID String
+    createdAt  DateTime @default(now())
 
-    @@index([shortUrl])
+    @@index([shortUrlID])
 }
