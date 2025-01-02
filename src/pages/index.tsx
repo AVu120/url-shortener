@@ -6,6 +6,7 @@ import { Input } from "~/components/ui/input";
 
 export default function Home() {
   const [url, setUrl] = useState("");
+  const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
 
   const changeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +29,8 @@ export default function Home() {
     }
 
     const data = await response.json();
+    setUrl("");
+    setLongUrl(url);
     setShortUrl(data.shortUrlID);
   };
   return (
@@ -45,8 +48,13 @@ export default function Home() {
           <form className="flex flex-col gap-4" onSubmit={generateShortUrl}>
             <Input onChange={changeUrl} value={url} required type="url" />
             <Button type="submit">Generate</Button>
-            {!!shortUrl &&
-              `Generated short URL: ${document.location.origin}/api/urls/${shortUrl}`}
+            <p className="text-white">
+              {!!shortUrl &&
+                `Generated short URL: ${document.location.origin}/api/urls/${shortUrl}`}
+            </p>
+            <p className="text-white">
+              {!!shortUrl && `Will redirect to: ${longUrl}`}
+            </p>
           </form>
         </div>
       </main>
