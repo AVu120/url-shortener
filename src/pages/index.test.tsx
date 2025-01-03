@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import IndexPage from "./index";
+import { expect, jest, test, beforeAll } from "@jest/globals";
 
 // Mock window.alert
 beforeAll(() => {
@@ -18,7 +19,7 @@ test("submitting form should make a POST request to /api/urls", async () => {
       json: () => Promise.resolve({ shortUrlID: shortUrlID }),
     }),
   );
-  global.fetch = mockFetch;
+  global.fetch = mockFetch as typeof fetch;
 
   // Render the component
   render(<IndexPage />);

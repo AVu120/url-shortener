@@ -54,6 +54,9 @@ importers:
         specifier: ^3.23.3
         version: 3.24.1
     devDependencies:
+      '@jest/globals':
+        specifier: ^29.7.0
+        version: 29.7.0
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
