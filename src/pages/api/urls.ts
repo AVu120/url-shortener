@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   if (req.method === "POST") {
-    const { url } = JSON.parse(req.body);
+    const { url }: { url: string } = JSON.parse(req.body);
     if (!url) {
       return res.status(400).json({ message: "URL is required" });
     }
