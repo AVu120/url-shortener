@@ -9,7 +9,7 @@ export default function Home() {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
 
-  const changeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeUrl = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUrl(e.target.value);
   };
 
@@ -46,14 +46,20 @@ export default function Home() {
             URL Shortener
           </h1>
           <form className="flex flex-col gap-4" onSubmit={generateShortUrl}>
-            <Input onChange={changeUrl} value={url} required type="url" />
+            <Input
+              aria-label="URL"
+              onChange={changeUrl}
+              value={url}
+              required
+              type="url"
+            />
             <Button type="submit">Generate</Button>
             <p className="text-white">
               {!!shortUrl &&
                 `Generated short URL: ${document.location.origin}/api/urls/${shortUrl}`}
             </p>
             <p className="text-white">
-              {!!shortUrl && `Will redirect to: ${longUrl}`}
+              {!!shortUrl && `will redirect to: ${longUrl}`}
             </p>
           </form>
         </div>
