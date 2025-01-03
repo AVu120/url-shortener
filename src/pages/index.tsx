@@ -31,7 +31,7 @@ export default function Home() {
     const data = await response.json();
     setUrl("");
     setLongUrl(url);
-    setShortUrl(data.shortUrlID);
+    setShortUrl(data?.shortUrlID);
   };
   return (
     <>
